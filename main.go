@@ -204,7 +204,8 @@ func loadDict(dictFile string) *Tree {
 	return treeInv
 }
 
-
+/*todo оптимизация: поиск рядом c последней поставленной буквой + поиск с самой буквы
+*/
 func find(board [][]string, tree *Tree, p *FindParams) {
 	p.w = len(board[0])
 	p.strBoard = board
@@ -229,6 +230,7 @@ func find(board [][]string, tree *Tree, p *FindParams) {
 		}
 	}
 
+	// search on board
 	for y,row := range p.board {
 		for x,boardChar := range row {
 			if boardChar == 0 {
@@ -371,7 +373,7 @@ func main(){
 		os.Exit(3)
 	}
 
-	// command line run
+	// command line run for test
 	tree := loadDict(*dictFile)
 
 	board := [][]string{
